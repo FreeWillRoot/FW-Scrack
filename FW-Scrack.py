@@ -60,13 +60,13 @@ def log(scan_type,host,port,info=''):
     time_str = time.strftime('%X', time.localtime( time.time()))
     if scan_type == 'portscan':
         erase()
-        print "[%s] \033[0;36;40m\t%s:%d\033[0m \033[0;32;40m\t开启\033[0m" % (time_str,host,int(port))
+        print "[%s] \033[0;36;40m\t%s:%d %s\033[0m" % (time_str,host,int(port),'开启')
     elif scan_type == 'discern':
         erase()
-        print "[%s] \033[0;36;40m\t%s:%d\033[0m \033[0;32;40m\t%s\033[0m" % (time_str,host,int(port),info)
+        print "[%s] \033[0;36;40m\t%s:%d %s\033[0m" % (time_str,host,int(port),info)
     elif scan_type == 'active':
         erase()
-        print "[%s] \033[0;36;40m\t%s\033[0m \033[0;32;40m\t活跃\033[0m" % (time_str, host)
+        print "[%s] \033[0;36;40m\t%s %s\033[0m" % (time_str, host,'活跃')
     elif info:
         log = "[%s] \033[0;36;40m\t%s:%d\033[0m \033[0;32;40m\t%s %s\033[0m"%(time_str,host,int(port),scan_type,info)
         erase()
@@ -187,7 +187,7 @@ class Crack():
                 result = k(user,pass_)
                 if result:return result
     def ftp(self,user,pass_):
-        linePrint().inLine('正在测试username:%s,password:%s' % (user,pass_))
+        linePrint().inLine('ftp测试 username:%s,password:%s' % (user,pass_))
         try:
             ftp=ftplib.FTP()
             ftp.connect(self.ip,self.port)
@@ -197,7 +197,7 @@ class Crack():
         except Exception,e:
             pass
     def mysql(self,user,pass_):
-        inLine('正在测试username:%s,password:%s' % (user,pass_))
+        inLine('mysql测试 username:%s,password:%s' % (user,pass_))
         sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         sock.connect((self.ip,int(self.port)))
         packet = sock.recv(254)
@@ -209,7 +209,7 @@ class Crack():
         if result == "\x07\x00\x00\x02\x00\x00\x00\x02\x00\x00\x00":
             return "username:%s,password:%s" % (user,pass_)
     def postgresql(self,user,pass_):
-        inLine('正在测试username:%s,password:%s' % (user,pass_))
+        inLine('postgresql测试 username:%s,password:%s' % (user,pass_))
         try:
             sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
             sock.connect((self.ip,int(self.port)))
@@ -237,7 +237,7 @@ class Crack():
         except Exception,e:
             return 3
     def redis(self,user,pass_):
-        inLine('正在测试username:%s,password:%s' % (user,pass_))
+        inLine('redis测试 username:%s,password:%s' % (user,pass_))
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((self.ip,int(self.port)))
@@ -256,7 +256,7 @@ class Crack():
         except Exception,e:
             return 3
     def mssql(self,user,pass_):
-        inLine('正在测试username:%s,password:%s' % (user,pass_))
+        inLine('mssql测试 username:%s,password:%s' % (user,pass_))
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.connect((self.ip,self.port))
@@ -292,7 +292,7 @@ class Crack():
         except:
             return 3
     def mongodb(self,user,pass_):
-        inLine('正在测试username:%s,password:%s' % (user,pass_))
+        inLine('mongodb测试 username:%s,password:%s' % (user,pass_))
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((self.ip,int(self.port)))
@@ -309,7 +309,7 @@ class Crack():
         except Exception,e:
             return 3
     def memcached(self,user,pass_):
-        inLine('正在测试username:%s,password:%s' % (user,pass_))
+        inLine('memcached测试 username:%s,password:%s' % (user,pass_))
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((self.ip,int(self.port)))
         s.send("stats\r\n")
@@ -317,7 +317,7 @@ class Crack():
         if "version" in result:
             return "unauthorized"
     def elasticsearch(self,user,pass_):
-        inLine('正在测试username:%s,password:%s' % (user,pass_))
+        inLine('elasticsearch测试 username:%s,password:%s' % (user,pass_))
         url = "http://"+self.ip+":"+str(self.port)+"/_cat"
         data = urllib2.urlopen(url).read()
         if '/_cat/master' in data:
@@ -325,7 +325,7 @@ class Crack():
         else:
             return 3
     def telnet(self,user,pass_):
-        inLine('正在测试username:%s,password:%s' % (user,pass_))
+        inLine('telnet测试 username:%s,password:%s' % (user,pass_))
         try:
             tn = telnetlib.Telnet(self.ip,self.port,self.timeout)
             time.sleep(0.5)
