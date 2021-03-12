@@ -473,6 +473,8 @@ Usage: python FW-Scrack.py -h 0.0.0.0 [-p 21,80,3306] [-m 50] [-t 10] [-d pass.t
                 t.start()
             t_join(m_count)
     except Exception,e:
+        erase()
         print msg
     finally:
+        erase()
         print "\033[0;35m\t\nTask Completed\033[0m"
