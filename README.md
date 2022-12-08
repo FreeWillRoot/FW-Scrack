@@ -1,7 +1,7 @@
 # FW-Scrack弱口令检测工具
 1. **致敬原作者**
 	首先致敬原作者wolf@YSRC，根据原作者的工具F-Scrack做了一些修改和优化。
-	新的版本就叫FW-Scrack.目前优化了输出信息，取消了no ping功能（mac系统不友好），后续会升级线程为进程。
+	新的版本就叫FW-Scrack.目前优化了输出信息，取消了no ping功能（mac系统不友好）
 2. **功能**  
 	FW-Scrack超级弱口令检测工具py版,可用于FTP、MYSQL、MSSQL、MONGODB、REDIS、TELNET、ELASTICSEARCH、POSTGRESQL的检测
 3. **特点**  
@@ -23,5 +23,3 @@
 6. **特别声明**  
 	此脚本仅可用于授权的渗透测试以及自身的安全检测中。  
 	此脚本仅用于学习以及使用，可自由进行改进，禁止提取加入任何有商业行为的产品中。  
-7. **联系我**
-	QQ群:786155857
